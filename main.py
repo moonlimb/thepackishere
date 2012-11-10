@@ -19,5 +19,9 @@ app.config.from_object(__name__)
 def show_calendar():
 	return render_template("calendar.html")
 
+@app.route("/event", methods = ['GET'])
+def show_event():
+	return render_template("event.html")
+
 if __name__ == "__main__":
 	app.run(debug = True)
