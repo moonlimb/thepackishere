@@ -28,5 +28,8 @@ def show_calendar():
 def show_event():
 	return render_template("event.html")
 
+def show_roster():
+	return render_tempalate("roster.html", roster=players	
+
 if __name__ == "__main__":
 	app.run(debug = True)
