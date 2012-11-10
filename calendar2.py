@@ -16,10 +16,10 @@ FLAGS = gflags.FLAGS
 # The client_id and client_secret are copied from the API Access tab on
 # the Google APIs Console
 FLOW = OAuth2WebServerFlow(
-    client_id='734772233028.apps.googleusercontent.com',
-    client_secret='Jr0R-HN7wGErPDfbBA5nkfCh',
+    client_id='207411529376.apps.googleusercontent.com',
+    client_secret='EK8_nIJW04KiwKeKypBBWyjy',
     scope='https://www.googleapis.com/auth/calendar',
-    user_agent='hackaton/1.0')
+    user_agent='thepackishere/1.0')
 
 # To disable the local server feature, uncomment the following line:
 # FLAGS.auth_local_webserver = False
@@ -41,4 +41,9 @@ http = credentials.authorize(http)
 # the Google APIs Console
 # to get a developerKey for your own application.
 service = build(serviceName='calendar', version='v3', http=http,
-       developerKey='AIzaSyC61bMgmBNaidZPZSOLk0-uAclmh8YamMQ')
+       developerKey='AIzaSyCqir3318G1p_iff-fdT9FGDlSv37dQs1Y')
+
+calendar = service.calendars().get(calendarId='9kcpuhe9mj27uffcjlopnnpfrs@group.calendar.google.com').execute()
+
+print calendar['summary']
+
