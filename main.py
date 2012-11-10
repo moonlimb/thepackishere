@@ -121,7 +121,9 @@ def show_all_events():
 @app.route("/event", methods = ['GET'])
 def show_event():
 	#event_detail = Event
-	return render_template("details.html")
+	event_list =db_session.query(EventDetails).all()
+	event = event_list.fetchone()
+	return render_template("details.html", event=event)
 	#return render_template("details.html", event=event_detail)
 
 @app.route("/roster", methods = ['GET'])
