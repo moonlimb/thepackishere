@@ -4,12 +4,12 @@ from flask import Flask, session, render_template, redirect, request, url_for, g
 import os
 import sqlite3
 from model import session as db_session, Player, EventDetails
-#import gflags
-#import httplib2
-#import json
-#from apiclient.discovery import build_from_document, build
-#import random
-#from oauth2client.client import OAuth2WebServerFlow
+import gflags
+import httplib2
+import json
+from apiclient.discovery import build_from_document, build
+import random
+from oauth2client.client import OAuth2WebServerFlow
 
 # flask session: browser session (info identifying particular user of a web app)
 # model session: database session (connection to db)
@@ -126,6 +126,11 @@ def show_event():
 	event = event_list.pop()
 	return render_template("details.html", event=event, players = player_list)
 	#return render_template("details.html", event=event_detail)
+
+@app.route("/player/<int:id>", methods=['GET'])
+def get_player(id):
+	player = db_session.query(Player).get(id)
+	return render_template("player.html", player=player)
 
 @app.route("/roster", methods = ['GET'])
 def show_roster():
