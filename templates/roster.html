@@ -1,4 +1,4 @@
-<!-- event detail page -->
+<!-- Team Roster -->
 <html lang = "en">
 	<head>
 		<title>Team Roster</title>
@@ -43,14 +43,17 @@
 		<table class = "table table-hover">
 		<tr id=topRosterRow>
 			<td>#</td>
+			<td>Derby Name</td>
 			<td>First Name</td>
 			<td>Last Name</td>
-			<td>Email</td>
 			<td>Phone Number</td>
+			<td>Email</td>
 			<td>Twitter</td>
 		{% for player in players %}
-		</tr>
+		<tr>
+			<td><img src={{player.picture}} alt="some_text"></td>
 			<td>1</td>
+			<td>{{player.derby_name}}</td>
 			<td>{{player.firstname}}</td>
 			<td>{{player.lastname}}</td>
 			<td>{{player.mobile}}</td>
