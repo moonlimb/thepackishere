@@ -1,0 +1,44 @@
+<!-- Team Roster -->
+<html lang = "en"> 
+  <head><title>{{player.derby_name}} Info</title>
+  </head>
+  <link href = "static\bootstrap.css" rel = "stylesheet">
+  <style type="text/css">
+		body {
+       	 padding-top: 60px;
+          padding-bottom: 40px;
+      }
+      .sidebar-nav {
+      	  	padding: 9px 0;
+      }
+		#topRosterRow{
+			font-weight:bold;
+		}
+  </style>
+  <body>
+	 <div class="container-fluid">
+     <div class="row-fluid">
+     	<div class ="span3">
+				<a class="twitter-timeline" href="https://twitter.com/search?q=%23espnwderby" 
+				data-widget-id="267340562263326720">Tweets about "#espnwderby"</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){
+		js=d.createElement			(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+				</script>
+		  </div>
+	  	<div class ="span6">
+		<img src={{player.picture}} alt="player_picture">
+		<h2>{{player.derby_name}}</h2>
+		<table>
+		 <tr><td id=type>name:</td><td id=info>{{player.firstname}} {{player.lastname}}</td></tr>
+		 <tr><td id=type>Role:</td><td id=info>{{player.role}}</td></tr>
+		 <tr><td id=type>email:</td><td id=info>{{player.email}}</td></tr>
+		 <tr><td id=type>phone number:</td><td id=info>{{player.mobile}}</td></tr>
+		 <tr><td id=type>committee:</td><td id=info>{{player.commitee}}</td></tr>
+		 <tr><td id=type>facebook:</td><td id=info>{{player.facebook}}</td></tr>
+		<table>
+		</div>
+     </div>
+	 </div>
+ 
+
+
+</html>

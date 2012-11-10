@@ -15,8 +15,7 @@
 		#topRosterRow{
 			font-weight:bold;
 		}
-	</style>
-	
+	</style>	
 	<body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -38,25 +37,36 @@
         </div>
       </div>
     </div>
-
-	<div class= "container">
+  <div class="container-fluid">
+  <div class="row-fluid">
+	  	<div class ="span3">
+				<a class="twitter-timeline" href="https://twitter.com/search?q=%23espnwderby" 
+				data-widget-id="267340562263326720">Tweets about "#espnwderby"</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){
+		js=d.createElement			(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+				</script>
+		  </div>
+		<div class ="span6">
 		<table class = "table table-hover">
-		<!--<tr id=topRosterRow>
-			<td></td>
-			<td>Derby Name</td>
-			<td>Phone Number</td>
-			<td>Email</td>
-			<td>Twitter</td> -->
 		{% for player in players %}
-		<tr>
-			<td><img src={{player.picture}} alt="some_text"></td>
+		<tr>		
+			<td><img src={{player.picture}} alt="player_picture"></td>
 			<td>{{player.derby_name}}</td>
 			<td>{{player.mobile}}</td>
-			<td><a href="https://twitter.com/intent/tweet?screen_name={{player.twitter}}" class="twitter-mention-button" data-lang="en">Tweet to {{player.twitter}}</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> </td>
+			<td><a href="https://twitter.com/intent/tweet?screen_name={{player.twitter}}" 
+					class="twitter-mention-button" data-lang="en">Tweet to {{player.twitter}}</a>
+			<script>
+			!function(d,s,id){
+					var js,fjs=d.getElementsByTagName(s)[0];
+					if(!d.getElementById(id)){
+						js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";
+						fjs.parentNode.insertBefore(js,fjs);
+					}
+			}(document,"script","twitter-wjs");</script> </td>
 		</tr>
 		{% endfor %}
 		</table>
+		</div>
+	</div>
 	</div>
 	</body>
 </html>

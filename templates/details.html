@@ -12,6 +12,7 @@
       	  	padding: 9px 0;
       	}
 			.nav-header{
+				font-size:15px;
 				color: #000000;
 			}
 			.btn{
@@ -33,10 +34,14 @@
 	
 			}
 			#detail{
-				font-size: 20px;
+				font-size: 15px;
 				font-family:"Arial";
 				font-weight: bold;
 				text-shadow: 0 1px 0 #ffffff;
+			}
+			#info{
+				font-size: 20px;
+				font-family:"Arial";
 			}
     </style>
 	</head>
@@ -48,7 +53,7 @@
 		function loaded(){}
 		function playerNotAttending(elem){
 			//document.getElementById("attendenceAlert").style.display = "inline";
-			alert(elem.id + " can't come to the game today");		
+			alert("Send an email saying that " + elem.id + " can't go to the game today?");		
 		}
 		function clicked(elem){
 			
@@ -61,11 +66,9 @@
 				elem.style.background = "#49c941";
 				elem.setAttribute('att', 'true');
 			}			
-		}
-		
+		}		
 	</script>
 	<body>
-
    <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -74,7 +77,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand">{{event.event_type}}</a>
+          <a class="brand">{{event.event_type}} Details</a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
               Logged in as <a href="#" class="navbar-link">Username</a>
@@ -86,13 +89,20 @@
         </div>
       </div>
     </div>
-	<div id= "attendenceAlert" class="alert alert-block" style = "display: none;">
+	<!--<div id= "attendenceAlert" class="alert alert-block" style = "display: none;">
   		<button type="button" class="close" data-dismiss="alert">×</button>
   		<h4>New Roster Change</h4>
  		 Helen can't come to the game today.
-		</div>
+		</div> -->
 	 <div class="container-fluid">
       <div class="row-fluid">
+			<div class ="span3">
+				<a class="twitter-timeline" href="https://twitter.com/search?q=%23espnwderby" 
+				data-widget-id="267340562263326720">Tweets about "#espnwderby"</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){
+		js=d.createElement			(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+				</script>
+		  </div>
         <div class="span2">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
@@ -103,16 +113,17 @@
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
-    	<div class="span9">
+    	<div class="span5">
       			<table id=details>
-						<tr><td = time id=detail>time: {{event.time_start}} </td></tr>
-						<tr><td = arrival id=detail>be there: {{event.time_arrive}} </td></tr>
-						<tr><td = loc id=detail>at:  {{event.event_address}} {{event.zipcode}}  </td></tr>
-						<tr><td = vs id=detail>against: {{event.time_start}} </td></tr>
-						<tr><td = comments id=detail>comments: {{event.comments}} </td></tr>
+						<tr><td = time id=detail>start time: <span id=info>{{event.geolat}} </span></td></tr>
+						<tr><td = arrival id=detail>end time: <span id=info>{{event.geolong}} </span></td></tr>
+						<tr><td = arrival id=detail>be there: <span id=info>{{event.time_arrive}} </span></td></tr>
+						<tr><td = loc id=detail>at:  <span id=info>{{event.event_address}} {{event.zipcode}}</span></td></tr>
+						<tr><td = vs id=detail>against: <span id=info>{{event.opposing_team}} </span></td></tr>
+						<tr><td = comments id=detail>comments: <span id=info>{{event.comments}} </span></td></tr>
 					</table>
    		 </div>
- 	 	</div><!--row-->
+		</div><!--row-->
 	</div><!--container-->
 
 	</body>
