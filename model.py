@@ -53,7 +53,7 @@ class EventDetails(Base):
 	def __init__(self, id=None, event_type=None, event_subject=None, time_arrive=None,
 				 time_start=None, geolat=None, geolong=None, event_address=None, 
 				 zipcode=None, opposing_team=None, uniform_color=None,
-				 comments=None)
+				 comments=None):
 		self.id = id
 		self.event_type = event_type
 		self.event_subject = event_subject

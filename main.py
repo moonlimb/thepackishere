@@ -12,13 +12,18 @@ SECRET_KEY = "Make a mark at espnW hackathon!"
 app.config.from_object(__name__)
 
 #@app.route('/')
-#@app.route("/event/<int:id>", methods=['GET'])
+"""
+@app.teardown_request
+def shutdown_session(exception = None):
+	db_session.remove()
+"""
 
 # create a main page containing calendar and embedded tweets
 @app.route("/calendar", methods=["GET"])
 def show_calendar():
 	return render_template("calendar.html")
 
+#@app.route("/event/<int:id>", methods=['GET'])
 @app.route("/event", methods = ['GET'])
 def show_event():
 	return render_template("event.html")
