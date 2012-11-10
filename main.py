@@ -127,6 +127,11 @@ def show_event():
 	return render_template("details.html", event=event, players = player_list)
 	#return render_template("details.html", event=event_detail)
 
+@app.route("/player/<int:id>", methods=['GET'])
+def get_player(id):
+	player = db_session.query(Player).get(id)
+	return render_template("player.html", player=player)
+
 @app.route("/roster", methods = ['GET'])
 def show_roster():
 	player_list = db_session.query(Player).all()	
