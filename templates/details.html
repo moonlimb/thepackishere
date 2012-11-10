@@ -1,0 +1,120 @@
+<!-- event detail page -->
+<html lang = "en">
+	<head>
+		<title>Event Details</title>
+		<link href = "static\bootstrap.css" rel = "stylesheet">
+		   <style type="text/css">
+      	body {
+       	 padding-top: 60px;
+          padding-bottom: 40px;
+      	}
+      	.sidebar-nav {
+      	  	padding: 9px 0;
+      	}
+			.nav-header{
+				color: #000000;
+			}
+			.btn{
+				background: #49c941;
+				width:2px;
+				height:1px;
+			}
+		   .btn:hover {
+  				border-top-color: #28597a;
+   			background: #28597a;
+  				color: #ccc;
+   		}
+			#details{
+				padding: 60px;
+				 background-color: #eeeeee;
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
+	
+			}
+			#detail{
+				font-size: 20px;
+				font-family:"Arial";
+				font-weight: bold;
+				text-shadow: 0 1px 0 #ffffff;
+			}
+    </style>
+	</head>
+
+	<script src="static/bootstrap.js">
+	</script>
+	<script type = "text/javascript">
+	
+		function loaded(){}
+		function playerNotAttending(elem){
+			//document.getElementById("attendenceAlert").style.display = "inline";
+			alert(elem.id + " can't come to the game today");		
+		}
+		function clicked(elem){
+			
+			if(elem.getAttribute('att') == "true"){
+				elem.style.background = "#eb1f2c";
+				elem.setAttribute('att', 'false');
+				playerNotAttending(elem);
+			}
+			else{
+				elem.style.background = "#49c941";
+				elem.setAttribute('att', 'true');
+			}			
+		}
+		
+	</script>
+	<body>
+
+   <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand">{{event.event_type}}</a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              Logged in as <a href="#" class="navbar-link">Username</a>
+            </p>
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+	<div id= "attendenceAlert" class="alert alert-block" style = "display: none;">
+  		<button type="button" class="close" data-dismiss="alert">×</button>
+  		<h4>New Roster Change</h4>
+ 		 Helen can't come to the game today.
+		</div>
+	 <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Roster</li>
+					{% for player in players %}
+              <li><a href="#"><button id= {{player.derby_name}} att=true class="btn" onclick = "clicked({{player.derby_name}})"></button>{{player.firstname}}</a> </li> 
+					{% endfor %}
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+    	<div class="span9">
+      			<table id=details>
+						<tr><td = time id=detail>time: {{event.time_start}} </td></tr>
+						<tr><td = arrival id=detail>be there: {{event.time_arrive}} </td></tr>
+						<tr><td = loc id=detail>at:  {{event.event_address}} {{event.zipcode}}  </td></tr>
+						<tr><td = vs id=detail>against: {{event.time_start}} </td></tr>
+						<tr><td = comments id=detail>comments: {{event.comments}} </td></tr>
+					</table>
+   		 </div>
+ 	 	</div><!--row-->
+	</div><!--container-->
+
+	</body>
+</html>
+

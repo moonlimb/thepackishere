@@ -5891,3 +5891,12 @@ a.badge:hover {
 .affix {
   position: fixed;
 }
+
+.sidetext {
+  position:absolute;
+  top:80px;
+  right:0;
+  left=0
+  width:<length>;
+  height:200px;
+ }
