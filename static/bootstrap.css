@@ -5894,9 +5894,15 @@ a.badge:hover {
 
 .sidetext {
   position:absolute;
-  top:80px;
-  right:0;
+  top:250px;
+  right:10px;
   left=0
   width:<length>;
   height:200px;
  }
+
+ .picture_top {
+ width: 100%;
+    max-height: 200px
+
+}

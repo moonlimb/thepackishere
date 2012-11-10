@@ -1,6 +1,18 @@
 {% extends "layout.html" %}
 {% block body %}
-<h1> THIS IS THE PACK</h1>
+<IMG class = "picture_top" SRC="/static/rollerdurby.jpg">
+<div class="navbar">
+  <div class="navbar-inner">
+   
+    <ul class="nav">
+    	<li> <a class="" href="{{url_for('index')}}">Home</a> </li>
+      <li class=""><a href="{{url_for('show_roster')}}">Roster</a></li>
+      <li><a href="{{url_for('show_all_events')}}">Events</a></li>
+      <li><a href="#">ESPN</a></li>
+    </ul>
+  </div>
+</div>
+
 
 <div class="sidetext">
 	<a class="twitter-timeline" href="https://twitter.com/search?q=%23espnwderby" data-widget-id="267340562263326720">Tweets about "#espnwderby"</a>
@@ -10,7 +22,7 @@
 </div>
 
 
-<iframe src="https://www.google.com/calendar/embed?title=The%20Pack%20is%20Here&amp;showTitle=0&amp;showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=9kcpuhe9mj27uffcjlopnnpfrs%40group.calendar.google.com&amp;color=%23691426&amp;ctz=America%2FLos_Angeles" style=" border:solid 1px #777 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<iframe src="https://www.google.com/calendar/embed?title=The%20Pack%20is%20Here&amp;showTitle=0&amp;showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=9kcpuhe9mj27uffcjlopnnpfrs%40group.calendar.google.com&amp;color=%23691426&amp;ctz=America%2FLos_Angeles" style=" border:solid 1px #777 " width="690" height="600" frameborder="0" scrolling="no"></iframe>
 
 
 {% endblock %}
