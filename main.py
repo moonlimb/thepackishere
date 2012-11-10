@@ -29,11 +29,11 @@ def shutdown_session(exception = None):
 @app.route('/login')
 def login():
 	flow = OAuth2WebServerFlow(client_id=CLIENT_ID,
-	client_secret=CLIENT_SECRET,
-	scope='https://www.googleapis.com/auth/calendar',
-	redirect_uri='http://localhost:5000/oauth2callback',
-	approval_prompt='force',
-	access_type='offline')
+		client_secret=CLIENT_SECRET,
+		scope='https://www.googleapis.com/auth/calendar',
+		redirect_uri='http://localhost:5000/oauth2callback',
+		approval_prompt='force',
+		access_type='offline')
 
 	auth_uri = flow.step1_get_authorize_url()
 	return redirect(auth_uri)
@@ -49,15 +49,50 @@ def oauth2callback():
 	code = request.args.get('code')
 	if code:
     # exchange the authorization code for user credentials
-	flow = OAuth2WebServerFlow(CLIENT_ID, CLIENT_SECRET, "https://www.googleapis.com/auth/calendar")
-    flow.redirect_uri = request.base_url
-    try:
+		flow = OAuth2WebServerFlow(CLIENT_ID, CLIENT_SECRET, "https://www.googleapis.com/auth/calendar")
+		flow.redirect_uri = request.base_url
+	try:
 		credentials = flow.step2_exchange(code)
-    except Exception as e:
+	except Exception as e:
 		print "Unable to get an access token because ", e.message
     # store these credentials for the current user in the session
 	session['credentials'] = credentials
 	return redirect(url_for('index'))
+
+@app.route('/addevent', methods = ['GET', 'POST'])
+def add_event():
+	credentials = session['credentials']
+	if credentials == None:
+		return redirect(url_for('login'))
+	http = httplib2.Http()
+	http = credentials.authorize(http)
+	service = build("calendar", "v3", http=http)
+	location = request.form['location']
+	summary = request.form['title']
+	start_time = request.form['start_time']
+	end_time = request.form['end_time']
+
+	location = 'here'
+	summary = 'test'
+	start_time = '2012-11-10T10:00:00.000-07:00'
+	end_time = '2012-11-10T10:25:00.000-07:00'
+	end_time = request.form['end_time']
+
+	event = {
+	'summary': summary,
+	'location': location,
+	'start': {
+	'dateTime': start_time
+	},
+	'end': {
+	'dateTime': end_time
+	},
+	calendar_id: calendar_id
+	}
+
+	imported_event = service.events().import_(calendarId=calendar_id, body=event).execute()
+
+	print imported_event['id']
 
 @app.route('/')
 def index():
