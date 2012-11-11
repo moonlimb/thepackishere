@@ -28,9 +28,9 @@
 			#details{
 				padding: 60px;
 				 background-color: #eeeeee;
-  -webkit-border-radius: 10px;
-     -moz-border-radius: 10px;
-          border-radius: 10px;
+             -webkit-border-radius: 10px;
+             -moz-border-radius: 10px;
+             border-radius: 10px;
 	
 			}
 			#detail{
@@ -53,10 +53,9 @@
 		function loaded(){}
 		function playerNotAttending(elem){
 			//document.getElementById("attendenceAlert").style.display = "inline";
-			alert("Send an email saying that " + elem.id + " can't go to the game today?");		
+			alert("Send a text to your teammates saying that " + elem.id + " can't go to the game today?");		
 		}
-		function clicked(elem){
-			
+		function clicked(elem){			
 			if(elem.getAttribute('att') == "true"){
 				elem.style.background = "#eb1f2c";
 				elem.setAttribute('att', 'false');
@@ -106,9 +105,9 @@
         <div class="span2">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">Roster</li>
+              <li class="nav-header">Attending Roster</li>
 					{% for player in players %}
-              <li><a href="#"><button id= {{player.derby_name}} att=true class="btn" onclick = "clicked({{player.derby_name}})"></button>{{player.firstname}}</a> </li> 
+              <li><a href="{{url_for('text_player', bool = false)}}"><button id= {{player.derby_name}} att=true class="btn" onclick = "clicked({{player.derby_name}})"></button>{{player.derby_name}}</a> </li> 
 					{% endfor %}
             </ul>
           </div><!--/.well -->

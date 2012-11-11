@@ -14,6 +14,22 @@
 		#topRosterRow{
 			font-weight:bold;
 		}
+		#type{
+			font-size: 15px;
+			font-family:"Arial";
+			font-weight: bold;
+		}
+		#info{
+			font-size: 20px;
+			font-family:"Arial";
+	    }
+		#playerInfo{
+			padding: 60px;
+			background-color: #eeeeee;
+			-webkit-border-radius: 10px;
+             -moz-border-radius: 10px;
+             border-radius: 10px;
+		}
   </style>
   <body>
   	<div class="navbar navbar-inverse navbar-fixed-top">
@@ -47,7 +63,7 @@
 	  	<div class ="span6">
 		<img src={{player.picture}} alt="player_picture">
 		<h2>{{player.derby_name}}</h2>
-		<table>
+		<table id = playerInfo>
 		 <tr><td id=type>name:</td><td id=info>{{player.firstname}} {{player.lastname}}</td></tr>
 		 <tr><td id=type>Role:</td><td id=info>{{player.role}}</td></tr>
 		 <tr><td id=type>email:</td><td id=info>{{player.email}}</td></tr>
