@@ -1,4 +1,4 @@
-<!-- Team Roster -->
+<!-- Player Info Page-->
 <html lang = "en"> 
   <head><title>{{player.derby_name}} Info</title>
   </head>
@@ -16,6 +16,26 @@
 		}
   </style>
   <body>
+  	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand">{{player.derby_name}}</a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              Logged in as <a href="#" class="navbar-link">Username</a>
+            </p>
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 	 <div class="container-fluid">
      <div class="row-fluid">
      	<div class ="span3">

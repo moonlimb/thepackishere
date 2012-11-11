@@ -1,4 +1,4 @@
-<!-- Team Roster -->
+<!-- Team Roster Page-->
 <html lang = "en">
 	<head>
 		<title>Team Roster</title>
@@ -40,16 +40,21 @@
   <div class="container-fluid">
   <div class="row-fluid">
 	  	<div class ="span3">
-				<a class="twitter-timeline" href="https://twitter.com/search?q=%23espnwderby" 
-				data-widget-id="267340562263326720">Tweets about "#espnwderby"</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){
-		js=d.createElement			(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+				<a class="twitter-timeline" href="https://twitter.com/search?q=%23espnwderby&result_type=recent" 
+				data-widget-id="267340562263326720">Tweets about "#espnwderby"</a>
+				<script>!function(d,s,id){
+					var js,fjs=d.getElementsByTagName(s)[0];
+					if(!d.getElementById(id)){
+						js=d.createElement(s);
+						js.id=id;js.src="//platform.twitter.com/widgets.js";
+						fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 				</script>
 		  </div>
 		<div class ="span6">
 		<table class = "table table-hover">
 		{% for player in players %}
-		<tr>		
-			<td><img src={{player.picture}} alt="player_picture"></td>
+		<tr>				
+			<td><a href="{{url_for('get_player', id = player.id)}}" method="GET"> <img src={{player.picture}} alt="player_picture" width ="80" height = "80"></a></td>
 			<td>{{player.derby_name}}</td>
 			<td>{{player.mobile}}</td>
 			<td><a href="https://twitter.com/intent/tweet?screen_name={{player.twitter}}" 
@@ -70,5 +75,3 @@
 	</div>
 	</body>
 </html>
-
-
