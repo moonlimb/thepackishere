@@ -10,6 +10,7 @@ import json
 from apiclient.discovery import build_from_document, build
 import random
 from oauth2client.client import OAuth2WebServerFlow
+from twilio.rest import TwilioRestClient
 
 # flask session: browser session (info identifying particular user of a web app)
 # model session: database session (connection to db)
@@ -41,7 +42,7 @@ def login():
 
 @app.route('/call_player/<int:id>', methods=['GET', 'POST'])
 def call_player(id):
-	player=db_session.query(Player).filter_by(id=id)
+	player=db_session.query(Player).get(id)
 	player_mobile=player.mobile
 		# Find these values at https://twilio.com/user/account
 	account_sid = "ACc164d87fee5c89aaca555cf5cd2aae01"
@@ -49,7 +50,7 @@ def call_player(id):
 	client = TwilioRestClient(account_sid, auth_token)
 	 
 	message = client.sms.messages.create(to=player_mobile, from_="+14156973102",
-	                                     body="Hello there!")
+	                                     body="Practice soon r u coming?")
 	return redirect(url_for('show_roster'))
 @app.route('/signout')
 def signout():
