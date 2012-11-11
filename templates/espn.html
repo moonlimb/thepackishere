@@ -1,4 +1,48 @@
 {% extends "layout.html" %}
-{% %}
+{% block body %}
+<div class="container">
+<script>
+    (function($) {  
+ 
+      $(document).ready(function() {
+            $.ajax({
+                  url: 'http://api.espn.com/v1/sports/basketball/wnba/news/?insider=yes&_accept=application%2Fjson&apikey=29wmmack7bsg2amfzyc3pbs8',
+                  cache: true,
+                  data: 'apiKey=29wmmack7bsg2amfzyc3pbs8',
+                  dataType: 'jsonp',
+                  success: function (data) {
+                        var headlinesHTML = '';
+                        if (data != null) {
+                              if (data.headlines != null) {
+                                    for (i=0; i<data.headlines.length; i++) {
+                                          var headline = data.headlines[i], headlineText = '', headlineURL = '';
+                                          if (headline != null) {
+                                                if (headline.headline != null) {
+                                                      headlineText = headline.headline;
+                                                }
+                                                if (headline.links != null) {
+                                                      if (headline.links.web != null) {
+                                                            if (headline.links.web.href != null) {
+                                                                  headlineURL = headline.links.web.href;
+                                                            }
+                                                      }
+                                                }
+                                                headlinesHTML += '<li><a href="'+headlineURL+'">'+headlineText+'</a></li>';
+                                          }
+                                    }
+                                    if (headlinesHTML != '') {
+                                          $('#headlines').html(headlinesHTML);
+                                    }
+                              }
+                        }
+                  }
+            });
+ 
+      });
+ 
+    })(jQuery);
+</script>
+</div>
+    </html>
 
 {% endblock %}
