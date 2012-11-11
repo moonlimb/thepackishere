@@ -54,8 +54,7 @@
 		<table class = "table table-hover">
 		{% for player in players %}
 		<tr>				
-			<td><a href="{{url_for('get_player', id = player.id)}}" method="GET"> 
-			<img src={{player.picture}} alt="player_picture" width ="80" height = "80"></a></td>
+			<td><img src={{player.picture}} alt="player_picture" width ="80" height = "80"></a></td>
 			<td>{{player.derby_name}}</td>
 			<td><a href="{{url_for('call_player', id=player.id)}}"> {{player.mobile}}</a></td>
 			<td><a href="https://twitter.com/intent/tweet?screen_name={{player.twitter}}" 
