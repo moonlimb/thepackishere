@@ -107,7 +107,7 @@
             <ul class="nav nav-list">
               <li class="nav-header">Attending Roster</li>
 					{% for player in players %}
-              <li><button id= {{'player.derby_name'}} att=true class="btn" onclick = "clicked('{{player.derby_name}}')"></button>{{player.derby_name}}</li> 
+              <li><button id= {{player.derby_name}} att=true class="btn" onclick = "clicked({{player.derby_name}})"></button>{{player.derby_name}}</li> 
 					{% endfor %}
             </ul>
           </div><!--/.well -->
