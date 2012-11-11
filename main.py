@@ -38,6 +38,19 @@ def login():
 	auth_uri = flow.step1_get_authorize_url()
 	return redirect(auth_uri)
 
+
+@app.route('/call_player/<int:id>', methods=['GET', 'POST'])
+def call_player(id):
+	player=db_session.query(Player).filter_by(id=id)
+	player_mobile=player.mobile
+		# Find these values at https://twilio.com/user/account
+	account_sid = "ACc164d87fee5c89aaca555cf5cd2aae01"
+	auth_token = "08ab3b7142d5ac46b50705a555aa92a4"
+	client = TwilioRestClient(account_sid, auth_token)
+	 
+	message = client.sms.messages.create(to=player_mobile, from_="+14156973102",
+	                                     body="Hello there!")
+	return redirect(url_for('show_roster'))
 @app.route('/signout')
 def signout():
 	del session['credentials']
